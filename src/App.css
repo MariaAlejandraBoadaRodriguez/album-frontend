@@ -1,38 +1,187 @@
-.App {
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+/* Body Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Layout adjustments */
+.estructura {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the structure occupies the full screen */
+}
+
+main {
+  flex: 1; /* Make the main content expand */
+  padding: 20px;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Header */
+header {
+  background-color: #333;
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.header-container {
+  display: flex;
+  gap: 20px;
+}
+
+.icon {
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+}
+
+/* Competitions Section with Sticky Position */
+.competitions {
+  display: flex;
+  justify-content: space-around;
+  padding: 40px 0;
+  background-color: white;
+  position: sticky;  /* Sticky position */
+  top: 70px; /* Ajustar para estar justo debajo del header */
+  z-index: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow to distinguish the section */
+}
+
+.competition {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.competition img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.competition p {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Players Section */
+.players {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Ajuste dinámico según el tamaño de la pantalla */
+  gap: 20px;
+  padding: 40px;
+  margin-top: 50px; /* Espacio superior entre competencias y jugadores */
+}
+
+.player-card {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  padding: 15px;
+  transition: transform 0.3s ease;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  width: 100%;
+  height: 250px;
+  perspective: 1000px; /* Necesario para la perspectiva 3D */
+  min-height: 320px;
+}
+
+.player-image {
+  width: 100%;
+  height: auto;
+  max-height: 200px; /* Ajusta la altura máxima de las imágenes */
+  object-fit: contain;
+  border-radius: 5px; /* Para redondear la imagen un poco */
+  margin-bottom: 10px;
+}
+
+.player-card h3 {
+  margin: 5px 0; /* Menos espacio entre el título y el resto del contenido */
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.player-card p {
+  margin: 2px 0; /* Reduce el espacio entre las líneas de información */
+  font-size: 14px; /* Texto ligeramente más pequeño */
+  color: #666; /* Color de texto más suave */
+}
+
+.player-card div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Esconde la parte trasera cuando no está visible */
+  transition: transform 0.6s ease; /* Transición suave de 0.6 segundos para el giro */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.player-card-front {
+  background-color: #fff;
+}
+
+.player-card-back {
+  background-color: #f9f9f9;
+  transform: rotateY(180deg); /* La parte trasera comienza volteada */
+}
+
+.flipped .player-card-front {
+  transform: rotateY(180deg); /* La parte frontal se voltea */
+}
+
+.flipped .player-card-back {
+  transform: rotateY(0); /* La parte trasera se muestra al girar */
+}
+
+/* Load more section */
+.load-more {
+  text-align: center;
+  padding: 20px;
+  font-size: 16px;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  text-align: center;
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
