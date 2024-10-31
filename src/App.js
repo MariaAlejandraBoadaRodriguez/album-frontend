@@ -20,15 +20,15 @@ function Header() {
 // Competitions Component
 function Competitions() {
   const competitions = [
-    { imgSrc: './laliga.png', name: 'La Liga' },
-    { imgSrc: './champios.png', name: 'Champions League' },
-    { imgSrc: './premier.png', name: 'Premier League' }
+    { id: 1, imgSrc: './laliga.png', name: 'La Liga' },
+    { id: 2, imgSrc: './champios.png', name: 'Champions League' },
+    { id: 3, imgSrc: './premier.png', name: 'Premier League' }
   ];
 
   return (
     <section className="competitions">
-      {competitions.map((comp, index) => (
-        <div className="competition" key={index}>
+      {competitions.map((comp) => (
+        <div className="competition" key={comp.id}>
           <img src={comp.imgSrc} alt={comp.name} />
           <p>{comp.name}</p>
         </div>

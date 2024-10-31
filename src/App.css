@@ -190,7 +190,7 @@ footer {
 
 /* Clubs Section with Horizontal Scroll */
 .clubs {
-  padding: 20px;
+  padding: 15px;
   background-color: #fff;
   text-align: center;
   overflow-x: auto;
@@ -217,7 +217,6 @@ footer {
 }
 
 .club-shield {
-  width: 50px;
   height: 50px;
   object-fit: cover;
   margin-bottom: 5px;
@@ -238,8 +237,10 @@ footer {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
-  padding: 40px;
-  margin-top: 50px;
+  padding-right: 60px;
+  padding-left: 60px;
+  padding-top: 10px;
+  margin-top: 5px;
 }
 
 /* Load more section */
