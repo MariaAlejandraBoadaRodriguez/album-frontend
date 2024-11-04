@@ -1,18 +1,24 @@
 // src/components/Players.js
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import PlayerFactory from '../models/PlayerFactory.js';
 
 function Players() {
+    const { clubId } = useParams(); // Obtiene el clubId desde la URL si existe
     const [players, setPlayers] = useState([]);
     const [flippedCards, setFlippedCards] = useState({});
 
     useEffect(() => {
+        // Define la URL de la API dependiendo de si existe clubId
+        const url = clubId
+            ? `http://localhost:3302/api/jugadores?club_id=${clubId}`
+            : `http://localhost:3302/api/jugadores`;
+
         // Cargar los jugadores desde la API
-        fetch('http://localhost:3302/api/jugadores')
+        fetch(url)
             .then((response) => response.json())
             .then((data) => {
                 if (data && data.data) {
-                    // Usa PlayerFactory para crear instancias de Player
                     const playerInstances = data.data.map(playerData => PlayerFactory.createPlayer(playerData));
                     setPlayers(playerInstances);
                 } else {
@@ -20,12 +26,12 @@ function Players() {
                 }
             })
             .catch((error) => console.error("Error al cargar los jugadores:", error));
-    }, []);
+    }, [clubId]); // Ejecutar de nuevo si el clubId cambia
 
     const handleFlip = (index) => {
         setFlippedCards((prev) => ({
             ...prev,
-            [index]: !prev[index]
+            [index]: !prev[index],
         }));
     };
 
@@ -41,11 +47,7 @@ function Players() {
                         onClick={() => handleFlip(index)}
                     >
                         <div className="player-card-front">
-                            <img
-                                src={player.imgSrc}
-                                alt={player.name}
-                                className="player-image"
-                            />
+                            <img src={player.imgSrc} alt={player.name} className="player-image" />
                             <h3>{player.name}</h3>
                             <p>Position: {player.position}</p>
                             <p>Team: {player.club}</p>

@@ -22,7 +22,6 @@ body {
 .estructura {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ensure the structure occupies the full screen */
 }
 
 main {
@@ -190,28 +189,32 @@ footer {
 
 /* Clubs Section with Horizontal Scroll */
 .clubs {
-  padding: 15px;
+  /*padding: 15px;
   background-color: #fff;
   text-align: center;
   overflow-x: auto;
   display: flex;
   justify-content: center;
   margin-bottom: 20px; /* Margen inferior para separarlo de la siguiente sección */
+  flex: 0 0 auto;
 }
 
 .club-list {
   display: flex;
-  gap: 20px;
+  overflow-x: auto; /* Habilita el desplazamiento horizontal si es necesario */
+  flex-wrap: nowrap;
+  padding: 5px; 
+  /*gap: 20px;
   min-width: max-content;
-  justify-content: center;
+  justify-content: center;*/
 }
 
 .club {
   background-color: #f9f9f9;
-  border-radius: 10px;
+  border-radius: 15px;
   padding: 10px;
-  width: 150px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /*width: 150px;*/
+  /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
   text-align: center;
   flex: 0 0 auto;
 }
